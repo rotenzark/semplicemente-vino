@@ -83,11 +83,11 @@
   setTimeout(function () { if (!hasGsap || reducedMotion) showAllReveals(); }, 1500);
 
   if (hasGsap && !reducedMotion) {
-    gsap.utils.toArray('.reveal').forEach(function (el) {
-      gsap.fromTo(el, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+    gsap.utils.toArray('.reveal:not(.trovi-card)').forEach(function (el) {
+      gsap.fromTo(el, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out', immediateRender: false, scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
     });
     gsap.to('#heroPhoto', { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-    gsap.fromTo('.trovi-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .7, stagger: .14, ease: 'power2.out', scrollTrigger: { trigger: '.trovi-grid', start: 'top 82%', once: true } });
+    gsap.fromTo('.trovi-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .7, stagger: .14, ease: 'power2.out', immediateRender: false, scrollTrigger: { trigger: '.trovi-grid', start: 'top 82%', once: true } });
   } else {
     document.querySelectorAll('.reveal, .reveal-hero').forEach(function (el) { el.classList.add(SITE.inViewClass); el.style.opacity = 1; });
   }
